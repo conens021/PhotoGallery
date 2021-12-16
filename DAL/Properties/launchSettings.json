@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "DAL": {
+      "commandName": "Project"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\PhotoGallery.sln"
+    }
+  }
+}

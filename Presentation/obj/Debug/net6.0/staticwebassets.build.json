@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "mdaq0+2jrBoMR0whixxYmBtOUKqBVYnRVFPdCRYFy48=",
+  "Source": "Presentation",
+  "BasePath": "_content/Presentation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Presentation\\wwwroot",
+      "Source": "Presentation",
+      "ContentRoot": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
