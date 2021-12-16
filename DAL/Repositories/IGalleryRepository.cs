@@ -23,5 +23,6 @@ namespace DAL.Repositories
 
         public IEnumerable<string> GetCoverPhotos(int galleryId);
 
+        public IEnumerable<Gallery> GetAllGalleriesWithUser();
     }
 }

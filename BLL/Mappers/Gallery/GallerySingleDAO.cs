@@ -15,12 +15,10 @@ namespace BLL.Mappers.Gallery
             this.Name = gallery.Name; 
             this.CreatedAt= gallery.CreatedAt;
             this.UpdatedAt= gallery.UpdatedAt;
-            this.UserId = gallery.UserId;
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public int UserId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

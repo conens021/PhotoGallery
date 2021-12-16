@@ -27,8 +27,7 @@ namespace Presentation.Controllers
             return Ok(_galleryService.GetAllGalleries());
         }
 
-
-        [HttpGet("/gallery/{galleryId}/photos")]
+        [HttpGet("/gallery/{galleryId}")]
         public ActionResult GetGalleryPhotos(int galleryId)
         {
             GalleryPhotosDAO galleries = _galleryService.GetGalleryWithPhotos(galleryId);

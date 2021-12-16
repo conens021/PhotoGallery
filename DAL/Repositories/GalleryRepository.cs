@@ -41,7 +41,7 @@ namespace DAL.Repositories
             return galleryChanges;
         }
 
-        public Gallery Delete(int id) {
+        public Gallery? Delete(int id) {
 
             Gallery gallery =  context.Galleries.Find(id);
             if (gallery != null) { 
@@ -68,7 +68,12 @@ namespace DAL.Repositories
             return data.Photos;
            
         }
-     
+
+
+        public IEnumerable<Gallery> GetAllGalleriesWithUser() {
+
+            return context.Galleries.Include(g => g.User);
+        }
 
     }
 }

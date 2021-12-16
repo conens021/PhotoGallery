@@ -3,21 +3,23 @@ using DAL.Repositories;
 using BLL.Mappers.Gallery;
 using BLL.Mappers.PhotoDAO;
 using BLL.Excpetions;
+using BLL.Mappers.User;
+using BLL.Mappers.General;
 
 namespace BLL.Services
 {
     public class GalleryService
     {
         private readonly IGalleryRepository _Galleryrepository;
-        private readonly UserRepository userRepository;
+        private readonly IUserRepository userRepository;
 
-        public GalleryService(IGalleryRepository galleryRepository,UserRepository _userRepository) {
+        public GalleryService(IGalleryRepository galleryRepository,IUserRepository _userRepository) {
             _Galleryrepository = galleryRepository;
             userRepository = _userRepository;
         }
 
-        public IEnumerable<GallerySingleDAO>  GetAllGalleries() {
-            return _Galleryrepository.GetAll().Select(g => new GallerySingleDAO(g));
+        public IEnumerable<GallerySingleWithUser> GetAllGalleries() {
+           return _Galleryrepository.GetAllGalleriesWithUser().Select(g => new GallerySingleWithUser(new GallerySingleDAO(g), new UserSingle(g.User)));
         }
 
         public GalleryPhotosDAO GetGalleryWithPhotos(int id) {
@@ -75,5 +77,7 @@ namespace BLL.Services
 
             return gallery;
         }
+
+
     }
 }

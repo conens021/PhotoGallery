@@ -39,14 +39,14 @@ builder.Services.AddAuthentication(builder => {
     });
 
 builder.Services.AddScoped<AuthorizationHelper>();
+builder.Services.AddScoped<JwtAuthenticationManager>();
+
 builder.Services.AddScoped<GalleryService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<PhotoService>();
-builder.Services.AddScoped<JwtAuthenticationManager>();
 
-
-builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddScoped<IPhotoRepository, PhotoRepository>();
 
 
