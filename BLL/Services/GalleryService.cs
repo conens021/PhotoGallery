@@ -11,9 +11,9 @@ namespace BLL.Services
         private readonly IGalleryRepository _Galleryrepository;
         private readonly UserRepository userRepository;
 
-        public GalleryService(IGalleryRepository galleryRepository) {
+        public GalleryService(IGalleryRepository galleryRepository,UserRepository _userRepository) {
             _Galleryrepository = galleryRepository;
-            userRepository = new UserRepository();
+            userRepository = _userRepository;
         }
 
         public IEnumerable<GallerySingleDAO>  GetAllGalleries() {
