@@ -19,7 +19,9 @@ namespace BLL.Services
         }
 
         public IEnumerable<GallerySingleWithUser> GetAllGalleries() {
-           return _Galleryrepository.GetAllGalleriesWithUser().Select(g => new GallerySingleWithUser(new GallerySingleDAO(g), new UserSingle(g.User)));
+           return _Galleryrepository.GetAllGalleriesWithUser().
+                Select(g => new GallerySingleWithUser(g, new UserSingle(g.User)
+                    ));
         }
 
         public GalleryPhotosDAO GetGalleryWithPhotos(int id) {

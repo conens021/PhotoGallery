@@ -24,7 +24,9 @@ namespace Presentation.Controllers
 
         [HttpGet("/galleries")]
         public ActionResult GetAllGalleries() {
-            return Ok(_galleryService.GetAllGalleries());
+            return Ok(new GalleryList() { 
+                Galleries = _galleryService.GetAllGalleries().ToList() 
+            });
         }
 
         [HttpGet("/gallery/{galleryId}")]
