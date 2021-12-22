@@ -9,11 +9,9 @@ namespace DAL.Repositories
 {
     public interface IGalleryRepository
     {
-        public Gallery GetById(int id);
 
+        public Gallery GetById(int galleryId);
         public Gallery Add(Gallery gallery, User user);
-
-        public IEnumerable<Gallery> GetAll();
 
         public Gallery Update(Gallery galleryChanges);
 
@@ -21,8 +19,8 @@ namespace DAL.Repositories
 
         public Gallery GetGalleryPhotos(int galleryId);
 
-        public IEnumerable<string> GetCoverPhotos(int galleryId);
-
         public IEnumerable<Gallery> GetAllGalleriesWithUser();
+
+
     }
 }

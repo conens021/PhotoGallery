@@ -14,7 +14,9 @@ namespace DAL.Repositories
         public User GetById(int id);
 
         public User GetByUsernameOrEmailaAndPassword(string userNameOrEmail, string password);
+
         public User GetByUsernameOrEmail(string username);
+        
         public User Add(User user);
 
         public IEnumerable<User> GetAll();
@@ -23,6 +25,6 @@ namespace DAL.Repositories
 
         public User Delete(int id);
 
-        public User GetUserGalleries(int id);
+        public User GetUserGalleriesWithCoverPhotos(int userId);
     }
 }

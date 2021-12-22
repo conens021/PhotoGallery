@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "bPhGyss8KHv7bJ1aBncBc1piufyD0zjQcS80TQKUd2p/VlQ0JBUc+Qd6Db8rzswwARK2dwNMzPU0zMKECEuLWw==",
+  "dgSpecHash": "r/UK3+ETwECBPTrtoQFI9qSjbwG51PbQZxfHeA5vYI0urwjQwUREljYFPkxODYwmr2J89HiHVIUs9Okq+D2P8w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\Presentation.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Nemus\\.nuget\\packages\\fastmember\\1.5.0\\fastmember.1.5.0.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

@@ -36,6 +36,7 @@ namespace Presentation.Controllers
             return Ok(galleries);
         }
 
+
         [HttpPost("/gallery")]
         public ActionResult<GallerySingleDAO> CreateGallery([FromBody] GalleryCreateDAO galleryDAO)
         {

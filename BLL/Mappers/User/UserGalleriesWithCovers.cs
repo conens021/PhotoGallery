@@ -10,13 +10,12 @@ namespace BLL.Mappers.User
      public class UserGalleriesWithCovers
     {
         public UserGalleriesWithCovers() { }
-        public UserGalleriesWithCovers(UserSingle user,IEnumerable<GalleryCover> galleryCovers) { 
+        public UserGalleriesWithCovers(UserSingle user,IEnumerable<GallerySingleDAO> galleryCovers) { 
             this.User = user;
             this.Galleries = galleryCovers;
         }
 
-
         public UserSingle User { get; set; }
-        public IEnumerable<GalleryCover> Galleries { get; set; }
+        public IEnumerable<GallerySingleDAO> Galleries { get; set; }
     }
 }

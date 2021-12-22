@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "DRRF7hcu6fMMpa5ur0A4jbCGrL9eAYW8e0St9GlTuKEQwnNxNeyQ+NEnx89+i2TV1UfiZOULclXHpW2lRWawuQ==",
+  "dgSpecHash": "VD9w3Ra82P35876dmo5ILBJgQ3XtZHG8c1+M1fIdnowApWZB7V03w+5XYYGPO66DuIcyz3Z2tg85Z5L2nali/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Nemus\\.nuget\\packages\\fastmember\\1.5.0\\fastmember.1.5.0.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

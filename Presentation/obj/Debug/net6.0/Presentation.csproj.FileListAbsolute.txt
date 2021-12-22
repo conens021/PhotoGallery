@@ -193,3 +193,4 @@ C:\Users\Nemus\source\repos\PhotoGallery\Presentation\obj\Debug\net6.0\Presentat
 C:\Users\Nemus\source\repos\PhotoGallery\Presentation\obj\Debug\net6.0\ref\Presentation.dll
 C:\Users\Nemus\source\repos\PhotoGallery\Presentation\obj\Debug\net6.0\Presentation.pdb
 C:\Users\Nemus\source\repos\PhotoGallery\Presentation\obj\Debug\net6.0\Presentation.genruntimeconfig.cache
+C:\Users\Nemus\source\repos\PhotoGallery\Presentation\bin\Debug\net6.0\FastMember.dll

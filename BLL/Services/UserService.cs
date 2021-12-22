@@ -11,41 +11,42 @@ namespace BLL.Services
         private IUserRepository userRepository;
         private IGalleryRepository galleryRepository;
 
-        public UserService(IUserRepository userRepository,IGalleryRepository galleryRepository) {
+        public UserService(IUserRepository userRepository, IGalleryRepository galleryRepository)
+        {
             this.userRepository = userRepository;
             this.galleryRepository = galleryRepository;
         }
 
-        public IEnumerable<User> GetAll() {
+        public IEnumerable<User> GetAll()
+        {
 
             return userRepository.GetAll();
         }
 
         public UserSingle GetById(int id)
         {
-           User user =  userRepository.GetById(id);
-            if (user == null) throw new BussinesException("User not found",404);
+            User user = userRepository.GetById(id);
+            if (user == null) throw new BussinesException("User not found", 404);
             return new UserSingle(user);
         }
 
-        public UserSingle GetByUsernameOrEmailAndPassword(UserAuthenticate userAuth) {
-            User user = userRepository.GetByUsernameOrEmailaAndPassword( userAuth.UsernameOrEmail, userAuth.Password);
-            if (user == null) throw new BussinesException("User not found",401);
+        public UserSingle GetByUsernameOrEmailAndPassword(UserAuthenticate userAuth)
+        {
+            User user = userRepository.GetByUsernameOrEmailaAndPassword(userAuth.UsernameOrEmail, userAuth.Password);
+            if (user == null) throw new BussinesException("User not found", 401);
             return new UserSingle(user);
         }
 
-        public UserGalleriesWithCovers GetUserGalleries(int userId) {
-            User user = userRepository.GetUserGalleries(userId);
+        public UserGalleriesWithCovers GetUserGalleries(int userId)
+        {
+           User user = userRepository.GetUserGalleriesWithCoverPhotos(userId);
 
-            if (user == null) throw new BussinesException("User not found",404);
+           if (user == null) throw new BussinesException("User not found", 404);
 
-            IEnumerable<GalleryCover> cover  = user.Galleries.Select(g => {
+           IEnumerable<GallerySingleDAO> galleries = user.Galleries.Select(g => new GallerySingleDAO(g));
 
-                IEnumerable<string> coverPhotos =  galleryRepository.GetCoverPhotos(g.Id);
-                return new  GalleryCover( new GallerySingleDAO(g), coverPhotos );
-            });
+           return new UserGalleriesWithCovers(new UserSingle(user), galleries);
 
-            return new UserGalleriesWithCovers(new UserSingle(user), cover);
         }
 
         public UserSingle CreateUser(UserCreateDAO userDAO)
@@ -65,8 +66,8 @@ namespace BLL.Services
 
         public UserSingle Delete(int id)
         {
-            User user =  userRepository.Delete(id);
-            if (user == null) throw new BussinesException("User not found",404);
+            User user = userRepository.Delete(id);
+            if (user == null) throw new BussinesException("User not found", 404);
 
             return new UserSingle(user);
         }

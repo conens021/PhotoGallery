@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TgInTV0cNih2wXxtk8bov8KcxN5Hit4EuT3XPTitwG+v/fhqOUsNw0mXINKihlVETIWftG4M3osDiatKfNCIaA==",
+  "dgSpecHash": "brXPu5W5+4QX4y4eg4dZx/MvDmzJsM/eAvqC/m/Ay8EDI1EomTLVO9KzZVlkKyRY4WF5eSESoO/P+AZmuyRSPg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Nemus\\.nuget\\packages\\fastmember\\1.5.0\\fastmember.1.5.0.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Nemus\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
