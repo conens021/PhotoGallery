@@ -3,6 +3,7 @@ using BLL.Mappers.PhotoDAO;
 using BLL.Services;
 using Microsoft.AspNetCore.Authorization;
 using Presentation.Helpers;
+using Microsoft.AspNetCore.Hosting;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,13 +16,18 @@ namespace Presentation.Controllers
     {
         private PhotoService photoService;
         private readonly AuthorizationHelper authHelper;
+        //to get wwwrot folder
+        private readonly IHostEnvironment hostingEnvironment;
 
-        public PhotoController(AuthorizationHelper _authHelper,PhotoService _photoService) {
+        public PhotoController(AuthorizationHelper _authHelper, PhotoService _photoService,
+                                IHostEnvironment hostingEnvironment)
+        {
             photoService = _photoService;
             this.authHelper = _authHelper;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
-        // GET api/<PhotoController>/5
+     
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
@@ -31,23 +37,26 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] PhotoCreateDAO photoDAO)
+        public ActionResult UploadPhoto([FromForm] MultipartRequest request)
         {
-            PhotoWithGallery photo = photoService.CreateaPhoto(photoDAO,authHelper.GetJwtTokenUser());
+            string imagesFolder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
+            PhotoListWithGallery photoListWithGallery = photoService.CreateaPhoto(request, imagesFolder, authHelper.GetJwtTokenUser());
 
-            return Created($"/photo/{photo.Id}",photo);
+            return Ok(photoListWithGallery);
+
         }
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            PhotoSingleDAO photo = photoService.Delete(id, authHelper.GetJwtTokenUser());
+            string imagesFolder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
+            PhotoSingleDAO photo = photoService.Delete(id, imagesFolder, authHelper.GetJwtTokenUser());
             return Ok(photo);
         }
 
         [HttpPatch]
         public ActionResult UpdatePhoto([FromBody] PhotoUpdateDAO photoDAO)
         {
-            PhotoWithGallery photo = photoService.UpdatePhoto(photoDAO,authHelper.GetJwtTokenUser());
+            PhotoWithGallery photo = photoService.UpdatePhoto(photoDAO, authHelper.GetJwtTokenUser());
             return Ok(photo);
         }
     }

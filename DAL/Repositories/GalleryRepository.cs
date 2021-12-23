@@ -2,6 +2,7 @@
 using DAL.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using DAL.Mappers;
 
 namespace DAL.Repositories
 {
@@ -13,8 +14,6 @@ namespace DAL.Repositories
         {
             _configuration = configuration;
         }
-
-
         public Gallery GetById(int id)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -24,17 +23,12 @@ namespace DAL.Repositories
                     cmd.Parameters.AddWithValue("@GalleryId", id);
                     connection.Open();
                     SqlDataReader dataReader = cmd.ExecuteReader();
-                    Gallery gallery = new Gallery();
 
                     if (!dataReader.HasRows) return null;
 
                     dataReader.Read();
-                    gallery.Id = Convert.ToInt32(dataReader["Id"]);
-                    gallery.Name = Convert.ToString(dataReader["Name"]);
-                    gallery.CreatedAt = Convert.ToDateTime(dataReader["CreatedAt"]);
-                    gallery.UpdatedAt = Convert.ToDateTime(dataReader["UpdatedAt"]);
-                    gallery.UserId = Convert.ToInt32(dataReader["UserId"]);
-                    return gallery;
+
+                    return new ToGallery().WithAllFields(dataReader);
                 }
             }
 
@@ -48,6 +42,7 @@ namespace DAL.Repositories
                 {
                     //Get gallery
                     Gallery gallery = GetById(galleryId);
+                    if (gallery == null) return null;
                     List<Photo> photos = new List<Photo>();
                     connection.Open();
                     //Get photos
@@ -57,13 +52,7 @@ namespace DAL.Repositories
                     {
                         while (dataReader.Read())
                         {
-                            Photo photo = new Photo();
-                            photo.Id = Convert.ToInt32(dataReader["Id"]);
-                            photo.Path = Convert.ToString(dataReader["Path"]);
-                            photo.CreatedAt = Convert.ToDateTime(dataReader["CreatedAt"]);
-                            photo.UpdatedAt = Convert.ToDateTime(dataReader["UpdatedAt"]);
-                            photo.GalleryId = Convert.ToInt32(dataReader["GalleryId"]);
-                            photos.Add(photo);
+                            photos.Add(new ToPhoto().WithAllFields(dataReader));
                         }
                     }
                     gallery.Photos = photos;
@@ -112,44 +101,48 @@ namespace DAL.Repositories
 
         public IEnumerable<Gallery> GetAllGalleriesWithUser()
         {
-            string query = "SELECT Gallery.Id as GalleryId,Gallery.[Name] as GalleryName, Gallery.CreatedAt, Gallery.UpdatedAt," +
-                "Username,[User].Id as UserId from PhotoGallery.dbo.Gallery " +
-                "LEFT JOIN PhotoGallery.dbo.[User] " +
-                "ON PhotoGallery.dbo.[User].Id = PhotoGallery.dbo.Gallery.UserId ";
+            //Get all galleries with users Order by last updated
+            string query = "GetAllGalleriesWithUser";
 
             using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (!reader.HasRows) return null;
                     List<Gallery> galleries = new List<Gallery>();
+
+                    User user = null;
+
                     while (reader.Read())
                     {
                         galleries.Add(
-                            new Gallery()
-                            {
-                                Id = Convert.ToInt32(reader["GalleryId"]),
-                                Name = Convert.ToString(reader["GalleryName"]),
-                                CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
-                                UpdatedAt = Convert.ToDateTime(reader["UpdatedAt"]),
-                                User = new User()
-                                {
-                                    Id = Convert.ToInt32(reader["UserId"]),
-                                    Username = Convert.ToString(reader["Username"])
-                                }
-                            }
-                         );
+                            new ToGallery().WithUser(reader, user = new ToUser().IdAndUsername(reader))
+                        );
                     }
                     return galleries;
                 }
             }
         }
 
-        public Gallery Update(Gallery galleryChanges)
+        public bool UpdateGalleryName(Gallery galleryChanges)
         {
-            throw new NotImplementedException();
+            string query = "UPDATE Gallery SET Name = @GalleryName, UpdatedAt = CURRENT_TIMESTAMP WHERE Id = @GalleryId";
+
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@GalleryName", galleryChanges.Name);
+                    cmd.Parameters.AddWithValue("@GalleryId", galleryChanges.Id);
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0) return true;
+                    return false;
+                }
+            }
         }
 
     }

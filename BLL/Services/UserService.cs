@@ -17,10 +17,10 @@ namespace BLL.Services
             this.galleryRepository = galleryRepository;
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<UserSingle> GetAll()
         {
+            return userRepository.GetAll().Select(u => new UserSingle(u));
 
-            return userRepository.GetAll();
         }
 
         public UserSingle GetById(int id)
@@ -30,16 +30,16 @@ namespace BLL.Services
             return new UserSingle(user);
         }
 
-        public UserSingle GetByUsernameOrEmailAndPassword(UserAuthenticate userAuth)
+        public UserAuthorize GetByUsernameOrEmailAndPassword(string username,string password)
         {
-            User user = userRepository.GetByUsernameOrEmailaAndPassword(userAuth.UsernameOrEmail, userAuth.Password);
+            User user = userRepository.GetByUsernameOrEmailaAndPassword(username, password);
             if (user == null) throw new BussinesException("User not found", 401);
-            return new UserSingle(user);
+            return new UserAuthorize(user);
         }
 
         public UserGalleriesWithCovers GetUserGalleries(int userId)
         {
-           User user = userRepository.GetUserGalleriesWithCoverPhotos(userId);
+           User user = userRepository.GetUserGalleries(userId);
 
            if (user == null) throw new BussinesException("User not found", 404);
 
@@ -49,8 +49,11 @@ namespace BLL.Services
 
         }
 
-        public UserSingle CreateUser(UserCreateDAO userDAO)
+        public UserAuthorize CreateUser(UserCreateDAO userDAO)
         {
+            if (userRepository.GetByUsernameOrEmail(userDAO.Username, userDAO.Email) != null) 
+                throw new BussinesException("User with given Username or Email already exists.",400);
+
             User user = new User();
             user.Username = userDAO.Username;
             user.Email = userDAO.Email;
@@ -61,7 +64,7 @@ namespace BLL.Services
             user.UpdateAt = DateTime.Now;
             userRepository.Add(user);
 
-            return new UserSingle(user);
+            return new UserAuthorize(user);
         }
 
         public UserSingle Delete(int id)

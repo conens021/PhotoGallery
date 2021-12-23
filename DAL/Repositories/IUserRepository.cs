@@ -10,12 +10,11 @@ namespace DAL.Repositories
     public interface IUserRepository
     {
 
-        public IEnumerable<User> GetUsers();
         public User GetById(int id);
 
         public User GetByUsernameOrEmailaAndPassword(string userNameOrEmail, string password);
 
-        public User GetByUsernameOrEmail(string username);
+        public User GetByUsernameOrEmail(string username,string email);
         
         public User Add(User user);
 
@@ -25,6 +24,6 @@ namespace DAL.Repositories
 
         public User Delete(int id);
 
-        public User GetUserGalleriesWithCoverPhotos(int userId);
+        public User GetUserGalleries(int userId);
     }
 }

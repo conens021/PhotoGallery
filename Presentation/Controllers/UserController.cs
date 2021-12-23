@@ -41,13 +41,7 @@ namespace Presentation.Controllers
             return Ok(userGalleries);
         }
 
-        [HttpPost]
-        [Route("")]
-        public ActionResult<User> CreateUser([FromBody] UserCreateDAO userDAO) {
-            UserSingle user = userService.CreateUser(userDAO);
-            return Created($"/user/{user.Id}",user);
-
-        }
+     
 
         [HttpDelete]
         [Route("{id}")]

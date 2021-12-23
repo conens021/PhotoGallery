@@ -2,6 +2,7 @@
 using DAL.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using DAL.Mappers;
 
 namespace DAL.Repositories
 {
@@ -15,7 +16,23 @@ namespace DAL.Repositories
         }
         public User Add(User user)
         {
-            throw new NotImplementedException();
+            string query = "addNewUser";
+
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"))){
+                using (SqlCommand cmd = new SqlCommand(query, conn)){
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Username", user.Username);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.Parameters.AddWithValue("@Email", user.Email);
+                    cmd.Parameters.AddWithValue("@Firstname", user.Firstname);
+                    cmd.Parameters.AddWithValue("@Lastname", user.Lastname);
+                    conn.Open();
+                    int userId = Convert.ToInt32(cmd.ExecuteScalar());
+                    user.Id = userId;
+                }
+            }
+
+            return user;
         }
 
         public User Delete(int id)
@@ -25,7 +42,24 @@ namespace DAL.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            string query = "GetAllUsers";
+            List<User> users = new List<User>();
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (!reader.HasRows) return null;
+                    while (reader.Read())
+                    {
+                        users.Add(new ToUser().WithAllFields(reader));
+                    }
+                }
+            }
+
+            return users;
         }
 
         public User GetById(int id)
@@ -42,21 +76,13 @@ namespace DAL.Repositories
                     SqlDataReader dataReader = cmd.ExecuteReader();
                     if (!dataReader.HasRows) return null;
                     dataReader.Read();
-                    User user = new User();
-                    user.Id = Convert.ToInt32(dataReader["Id"]);
-                    user.Username = Convert.ToString(dataReader["Username"]);
-                    user.Email = Convert.ToString(dataReader["Email"]);
-                    user.CreatedAt = Convert.ToDateTime(dataReader["CreatedAt"]);
-                    user.UpdateAt = Convert.ToDateTime(dataReader["UpdateAt"]);
-                    user.Firstname = Convert.ToString(dataReader["Firstname"]);
-                    user.Lastname = Convert.ToString(dataReader["Lastname"]);
-                    return user;
+                    return new ToUser().WithAllFields(dataReader);
                 }
             }
 
         }
 
-        public User GetByUsernameOrEmail(string username)
+        public User GetByUsernameOrEmail(string username,string email)
         {
             string query =
                 "select Id,Username, Email from [User] where (Username = @Username or Email = @Email )";
@@ -66,16 +92,12 @@ namespace DAL.Repositories
                     query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Email", username);
+                    cmd.Parameters.AddWithValue("@Email", email);
                     conn.Open();
                     SqlDataReader dataReader = cmd.ExecuteReader();
                     if (!dataReader.HasRows) return null;
                     dataReader.Read();
-                    User user = new User();
-                    user.Id = Convert.ToInt32(dataReader["Id"]);
-                    user.Username = Convert.ToString(dataReader["Username"]);
-                    user.Email = Convert.ToString(dataReader["Email"]);
-                    return user;
+                    return new ToUser().UserAuthorization(dataReader);
                 }
             }
         }
@@ -96,75 +118,42 @@ namespace DAL.Repositories
                     SqlDataReader dataReader = cmd.ExecuteReader();
                     if (!dataReader.HasRows) return null;
                     dataReader.Read();
-                    User user = new User();
-                    user.Id = Convert.ToInt32(dataReader["Id"]);
-                    user.Username = Convert.ToString(dataReader["Username"]);
-                    user.Email = Convert.ToString(dataReader["Email"]);
-                    return user;
+                    return new ToUser().UserAuthorization(dataReader);
                 }
             }
         }
 
-        public User GetUserGalleriesWithCoverPhotos(int userId)
+        public User GetUserGalleries(int userId)
         {
-            string query = "SELECT Gallery.Id as GalleryId,Gallery.Name as GalleryName,Gallery.CreatedAt,Gallery.UpdatedAt,"+
-                "[User].Username,[User].Id as UserId,[User].Firstname,[User].Lastname,[User].Email " +
-                "from PhotoGallery.dbo.Gallery " +
-                "LEFT JOIN PhotoGallery.dbo.[User] " +
-                "ON PhotoGallery.dbo.[User].Id = PhotoGallery.dbo.Gallery.UserId " +
-                "WHERE[PhotoGallery].dbo.[User].Id = @UserId " +
-                "ORDER BY Gallery.CreatedAt DESC";
-
-            User user = new User();
-
+            string query = "UserGalleries";
+            User user = null;
             List<Gallery> galleries = new List<Gallery>();
 
-            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"))){
+
+                using (SqlCommand cmd = new SqlCommand(query, conn)){
+
                     cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
-                    int row = 0;
+
+                    int row = 1;
+
                     if (!reader.HasRows) return null;
-                    while (reader.Read())
-                    {
-                        row++;
-                        if (row == 1)
-                        {
-                            user.Id = Convert.ToInt32(reader["UserId"]);
-                            user.Username = Convert.ToString(reader["Username"]);
-                            user.Firstname = Convert.ToString(reader["Firstname"]);
-                            user.Lastname = Convert.ToString(reader["Lastname"]);
-                            user.Email = Convert.ToString(reader["Email"]);
+                    while (reader.Read()){
+                        if (row == 1){
+                            user = new ToUser().UserGalleries(reader);
                         }
-
-                        Gallery gallery = new Gallery()
-                        {
-                            Id = Convert.ToInt32(reader["GalleryId"]),
-                            Name = Convert.ToString(reader["GalleryName"]),
-                            CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
-                            UpdatedAt = Convert.ToDateTime(reader["UpdatedAt"]),
-
-                        };
-                        galleries.Add(gallery);
+                        galleries.Add(new ToGallery().WithUser(reader,user));
+                        row++;
                     }
-
                 }
             }
-
             user.Galleries = galleries;
-
-
             return user;
         }
 
-
-        public IEnumerable<User> GetUsers()
-        {
-            throw new NotImplementedException();
-        }
 
         public User Update(User userChanges)
         {

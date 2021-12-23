@@ -1,3 +1,4 @@
+using BLL.Helpers;
 using BLL.Mappers.ErrorHandling;
 using BLL.Services;
 using DAL.Entities;
@@ -45,7 +46,8 @@ builder.Services.AddScoped<GalleryService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<PhotoService>();
 
-builder.Services.AddScoped<AdoContext>();
+builder.Services.AddScoped<FileTypeValidation>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddScoped<IPhotoRepository, PhotoRepository>();
@@ -64,6 +66,8 @@ else {
 
     app.UseExceptionHandler("/Error");
 }
+
+app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();

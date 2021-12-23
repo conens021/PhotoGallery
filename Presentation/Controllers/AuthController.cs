@@ -23,9 +23,8 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         [HttpPost("/auth")]
         public ActionResult UserAuthenticate([FromBody] UserAuthenticate user) {
-            
-            return Ok(jwtAuthenticationManager.Authenticate(userService.GetByUsernameOrEmailAndPassword(user)));
-          
+            UserAuthorize userFromDb = userService.GetByUsernameOrEmailAndPassword(user.UsernameOrEmail, user.Password);
+            return Ok(new UserSession() { User = userFromDb, Jwt = jwtAuthenticationManager.Authenticate(userFromDb) });
         }
     }
 }

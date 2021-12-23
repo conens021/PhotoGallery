@@ -58,7 +58,7 @@ namespace Presentation.Controllers
         [HttpPatch("/gallery")]
         public ActionResult<GallerySingleDAO> UpdateGallery([FromBody] GalleryUpdateDAO galleryDAO)
         {
-              GallerySingleDAO gallery = _galleryService.UpdateGallery(galleryDAO, authorizationHelper.GetJwtTokenUser());
+              GallerySingleDAO gallery = _galleryService.ChangeGalleryName(galleryDAO, authorizationHelper.GetJwtTokenUser());
               return Created($"/gallery/{gallery.Id}", gallery);
             
         }

@@ -12,7 +12,7 @@ namespace Presentation.Attributes
 
         private readonly string KEY = "jdaskjdkajdczxjke";
 
-        public string Authenticate(UserSingle user)
+        public string Authenticate(UserAuthorize user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
 

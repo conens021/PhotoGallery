@@ -9,7 +9,6 @@ namespace BLL.Mappers.Gallery
      public class GallerySingleDAO
     {
 
-        public GallerySingleDAO() { }
         public GallerySingleDAO(DAL.Entities.Gallery gallery) {
             this.Id = gallery.Id;
             this.Name = gallery.Name; 

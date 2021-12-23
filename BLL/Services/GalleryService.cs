@@ -4,7 +4,6 @@ using BLL.Mappers.Gallery;
 using BLL.Mappers.PhotoDAO;
 using BLL.Excpetions;
 using BLL.Mappers.User;
-using BLL.Mappers.General;
 
 namespace BLL.Services
 {
@@ -20,7 +19,7 @@ namespace BLL.Services
 
         public IEnumerable<GallerySingleWithUser> GetAllGalleries() {
            return _Galleryrepository.GetAllGalleriesWithUser().
-                Select(g => new GallerySingleWithUser(g, new UserSingle(g.User)
+                Select(g => new GallerySingleWithUser(g, new UserGalleryList(g.User)
                     ));
         }
 
@@ -52,18 +51,18 @@ namespace BLL.Services
             return new GallerySingleDAO(gallery);
         }
 
-        public GallerySingleDAO UpdateGallery(GalleryUpdateDAO galleryDAO,string username)
+        public GallerySingleDAO ChangeGalleryName(GalleryUpdateDAO galleryDAO,string username)
         {
 
             Gallery gallery = _Galleryrepository.GetById(galleryDAO.Id);
 
             if (gallery == null) throw new BussinesException("Gallery not found", 404);
-            User user = userRepository.GetByUsernameOrEmail(username);
+            User user = userRepository.GetByUsernameOrEmail(username,username);
             
             if (user.Id != gallery.UserId) throw new BussinesException("You dont have permission to delete this gallery!", 403);
             gallery.Name = galleryDAO.Name;
             gallery.UpdatedAt = DateTime.Now;
-            _Galleryrepository.Update(gallery);
+            _Galleryrepository.UpdateGalleryName(gallery);
             return new GallerySingleDAO(gallery);
         }
 
@@ -72,7 +71,7 @@ namespace BLL.Services
            Gallery gallery = _Galleryrepository.GetById(id);
            if(gallery == null) throw new BussinesException("Gallery not found", 404);
            
-           User user = userRepository.GetByUsernameOrEmail(username);
+           User user = userRepository.GetByUsernameOrEmail(username,username);
            if (user.Id != gallery.UserId) throw new BussinesException("You dont have permission to delete this gallery!", 403);
 
            _Galleryrepository.Delete(id);

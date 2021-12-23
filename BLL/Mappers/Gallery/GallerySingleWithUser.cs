@@ -12,7 +12,7 @@ namespace BLL.Mappers.Gallery
     {
         public GallerySingleWithUser() { }
 
-        public GallerySingleWithUser(DAL.Entities.Gallery gallery,UserSingle user) {
+        public GallerySingleWithUser(DAL.Entities.Gallery gallery,UserGalleryList user) {
             this.GalleryId = gallery.Id;
             this.Name = gallery.Name;
             this.CreatedAt = gallery.CreatedAt;
@@ -24,6 +24,6 @@ namespace BLL.Mappers.Gallery
         public string Name { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public UserSingle User { get; set; }
+        public UserGalleryList User { get; set; }
     }
 }
