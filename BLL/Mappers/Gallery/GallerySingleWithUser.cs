@@ -10,7 +10,8 @@ namespace BLL.Mappers.Gallery
 {
     public class GallerySingleWithUser
     {
-        public GallerySingleWithUser() { }
+        public GallerySingleWithUser() { 
+        }
 
         public GallerySingleWithUser(DAL.Entities.Gallery gallery,UserGalleryList user) {
             this.GalleryId = gallery.Id;

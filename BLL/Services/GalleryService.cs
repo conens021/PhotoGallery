@@ -23,6 +23,12 @@ namespace BLL.Services
 
         public IEnumerable<GallerySingleWithUser> GetAllGalleries()
         {
+
+            IEnumerable<Gallery> galleries
+                = _Galleryrepository.GetAllGalleriesWithUser();
+
+            if (galleries == null) throw new BussinesException("We found no galleries. Try create one!",404);
+
             return _Galleryrepository.GetAllGalleriesWithUser().
                  Select(g => new GallerySingleWithUser(g, new UserGalleryList(g.User)
                      ));
