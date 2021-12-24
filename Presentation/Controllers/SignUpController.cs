@@ -24,7 +24,7 @@ namespace Presentation.Controllers
             string jwt = 
                 jwtAuthenticationManager.Authenticate(userService.GetByUsernameOrEmailAndPassword(userDAO.Username,userDAO.Password));
 
-            return Ok(new UserSession { User = user,Jwt = jwt});
+            return Ok(user);
 
         }
     }

@@ -33,7 +33,7 @@ namespace BLL.Services
         public UserAuthorize GetByUsernameOrEmailAndPassword(string username,string password)
         {
             User user = userRepository.GetByUsernameOrEmailaAndPassword(username, password);
-            if (user == null) throw new BussinesException("User not found", 401);
+            if (user == null) throw new BussinesException("Wrong username or password", 401);
             return new UserAuthorize(user);
         }
 

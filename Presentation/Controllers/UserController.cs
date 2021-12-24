@@ -42,16 +42,6 @@ namespace Presentation.Controllers
         }
 
      
-
-        [HttpDelete]
-        [Route("{id}")]
-        public ActionResult<User> RemoveUser(int id)
-        {
-            UserSingle user = userService.Delete(id);
-
-            return Ok(user);
-        }
-
         [HttpPatch("")]
         public ActionResult UpdateUser([FromBody] UserUpdateDAO userDAO) {
 

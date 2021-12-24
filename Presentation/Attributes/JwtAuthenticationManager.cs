@@ -10,13 +10,17 @@ namespace Presentation.Attributes
     public class JwtAuthenticationManager
     {
 
-        private readonly string KEY = "jdaskjdkajdczxjke";
+        private readonly IConfiguration _configuration;
+
+        public JwtAuthenticationManager(IConfiguration configuration) {
+            this._configuration = configuration;
+        }
 
         public string Authenticate(UserAuthorize user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            var tokenKey = Encoding.ASCII.GetBytes(KEY);
+            var tokenKey = Encoding.ASCII.GetBytes(_configuration["AppSettings:EncryptionKey"]);
 
             var tokenDescriptor = new SecurityTokenDescriptor() {
                 Subject = new ClaimsIdentity(new Claim[] {
@@ -32,7 +36,7 @@ namespace Presentation.Attributes
         }
 
         public string getUserName(string token) {
-            var key  = Encoding.ASCII.GetBytes(KEY);
+            var key  = Encoding.ASCII.GetBytes(_configuration["AppSettings:EncryptionKey"]);
             var handler = new JwtSecurityTokenHandler();
             var validations = new TokenValidationParameters
             {

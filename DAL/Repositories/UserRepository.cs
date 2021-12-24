@@ -3,6 +3,7 @@ using DAL.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using DAL.Mappers;
+using System.Data;
 
 namespace DAL.Repositories
 {
@@ -16,13 +17,20 @@ namespace DAL.Repositories
         }
         public User Add(User user)
         {
-            string query = "addNewUser";
+            string query = "Insert into [User](Username,Email,CreatedAt,UpdateAt,Firstname,Lastname,Password) " 
+                + "values(@Username,@Email,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,@Firstname,@Lastname,@Password); SELECT SCOPE_IDENTITY()";
 
             using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"))){
                 using (SqlCommand cmd = new SqlCommand(query, conn)){
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+           
+
+                    SqlParameter paramPassword = cmd.CreateParameter();
+                    paramPassword.ParameterName = "@Password";
+                    paramPassword.DbType =  DbType.AnsiStringFixedLength;
+                    paramPassword.Value = user.Password;
+                    cmd.Parameters.Add(paramPassword);
+
                     cmd.Parameters.AddWithValue("@Username", user.Username);
-                    cmd.Parameters.AddWithValue("@Password", user.Password);
                     cmd.Parameters.AddWithValue("@Email", user.Email);
                     cmd.Parameters.AddWithValue("@Firstname", user.Firstname);
                     cmd.Parameters.AddWithValue("@Lastname", user.Lastname);
@@ -33,6 +41,28 @@ namespace DAL.Repositories
             }
 
             return user;
+        }
+
+        public User GetByUsernameOrEmailaAndPassword(string userNameOrEmail, string password)
+        {
+
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT [Password],[Username], [Id], [Email] FROM [dbo].[User] WHERE Username = @Username OR Email = @Email";
+                    cmd.Parameters.AddWithValue("@Username", userNameOrEmail);
+                    cmd.Parameters.AddWithValue("@Email", userNameOrEmail);
+                    conn.Open();
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    if (!dataReader.HasRows) return null;
+                    dataReader.Read();
+
+                    if (dataReader["Password"].ToString() != password) return null;
+
+                    return new ToUser().UserAuthorization(dataReader);
+                }
+            }
         }
 
         public User Delete(int id)
@@ -102,26 +132,7 @@ namespace DAL.Repositories
             }
         }
 
-        public User GetByUsernameOrEmailaAndPassword(string userNameOrEmail, string password)
-        {
-            string query =
-                "select Id,Username, Email from [User] where (Username = @Username or Email = @Email ) AND [Password] = @Password";
-            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-            {
-                using (SqlCommand cmd = new SqlCommand(
-                    query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Username", userNameOrEmail);
-                    cmd.Parameters.AddWithValue("@Email", userNameOrEmail);
-                    cmd.Parameters.AddWithValue("@Password", password);
-                    conn.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (!dataReader.HasRows) return null;
-                    dataReader.Read();
-                    return new ToUser().UserAuthorization(dataReader);
-                }
-            }
-        }
+      
 
         public User GetUserGalleries(int userId)
         {

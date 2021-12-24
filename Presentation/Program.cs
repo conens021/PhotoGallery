@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 
 
-var key = "jdaskjdkajdczxjke";
+string key = builder.Configuration["AppSettings:EncryptionKey"];
 
 builder.Services.AddCors(options => options.AddPolicy("AllowAll", builder => {
     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
@@ -38,6 +38,7 @@ builder.Services.AddAuthentication(builder => {
             ValidateAudience = false
         };
     });
+
 
 builder.Services.AddScoped<AuthorizationHelper>();
 builder.Services.AddScoped<JwtAuthenticationManager>();
