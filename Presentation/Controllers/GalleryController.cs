@@ -16,10 +16,13 @@ namespace Presentation.Controllers
 
         private readonly GalleryService _galleryService;
         private readonly AuthorizationHelper authorizationHelper;
-        public GalleryController(AuthorizationHelper _authorizationHelper,GalleryService galleryService)
+        private readonly IHostEnvironment hostingEnvironment;
+        public GalleryController(AuthorizationHelper _authorizationHelper,GalleryService galleryService,
+                                  IHostEnvironment hostingEnvironment)
         {
             _galleryService = galleryService;
             authorizationHelper = _authorizationHelper;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         [HttpGet("/galleries")]
@@ -48,9 +51,8 @@ namespace Presentation.Controllers
         [HttpDelete("/gallery/{id}")]
         public ActionResult DeleteGallery(int id)
         {
-            //string userName =  jwtAuthenticationManager.getUserName(Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", ""));
-
-            Gallery gallery = _galleryService.Delete(id, authorizationHelper.GetJwtTokenUser());
+            string imagesFolder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
+            Gallery gallery = _galleryService.Delete(id, imagesFolder, authorizationHelper.GetJwtTokenUser());
             return Ok(gallery);
 
         }

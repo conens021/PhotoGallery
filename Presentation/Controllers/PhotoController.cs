@@ -45,6 +45,18 @@ namespace Presentation.Controllers
             return Ok(photoListWithGallery);
 
         }
+
+        [HttpPost("base64")]
+        public ActionResult UploadPhoto([FromBody] PhotoUploadBase64 photoUpload)
+        {
+            string imagesFolder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
+            PhotoListWithGallery photoListWithGallery = photoService.CreateaPhotoBase64(photoUpload, imagesFolder, authHelper.GetJwtTokenUser());
+
+            return Ok(photoListWithGallery);
+
+        }
+
+
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
@@ -59,5 +71,6 @@ namespace Presentation.Controllers
             PhotoWithGallery photo = photoService.UpdatePhoto(photoDAO, authHelper.GetJwtTokenUser());
             return Ok(photo);
         }
+
     }
 }

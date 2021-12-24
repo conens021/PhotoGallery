@@ -22,7 +22,7 @@ namespace Presentation.Attributes
                 Subject = new ClaimsIdentity(new Claim[] {
                     new Claim(ClaimTypes.Name, user.Username)
                 }),
-                Expires = DateTime.UtcNow.AddHours(10),
+                Expires = DateTime.UtcNow.AddHours(5),
                 SigningCredentials  = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature) 
         } ;
 
@@ -43,7 +43,7 @@ namespace Presentation.Attributes
             };
             var claims = handler.ValidateToken(token, validations, out var tokenSecure);
             return claims.Identity.Name;
-
         }
+
     }
 }

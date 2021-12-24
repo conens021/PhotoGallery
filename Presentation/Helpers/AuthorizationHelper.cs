@@ -14,9 +14,9 @@ namespace Presentation.Helpers
 
         public string GetJwtTokenUser() {
 
-            var bearer =  contextAccesor?.HttpContext?.Request.Headers.Authorization.ToString().Replace("Bearer ","");
+            var jwtTokenValue =  contextAccesor?.HttpContext?.Request.Headers.Authorization.ToString().Replace("Bearer ","");
 
-            return jwt.getUserName(bearer);
+            return jwt.getUserName(jwtTokenValue);
             
         }
     }
