@@ -10,59 +10,61 @@ using Presentation.Helpers;
 namespace Presentation.Controllers
 {
     [Authorize]
+    [Route("[controller]")]
     [ApiController]
-    public class GalleryController : ControllerBase
+    public class GalleriesController : ControllerBase
     {
 
         private readonly GalleryService _galleryService;
-        private readonly AuthorizationHelper authorizationHelper;
-        private readonly IHostEnvironment hostingEnvironment;
-        public GalleryController(AuthorizationHelper _authorizationHelper,GalleryService galleryService,
-                                  IHostEnvironment hostingEnvironment)
+        private readonly AuthorizationHelper _authorizationHelper;
+        private readonly PathRegistry _pathRegistry;
+
+        public GalleriesController(AuthorizationHelper authorizationHelper, GalleryService galleryService, PathRegistry pathRegistry)
         {
             _galleryService = galleryService;
-            authorizationHelper = _authorizationHelper;
-            this.hostingEnvironment = hostingEnvironment;
+            _authorizationHelper = authorizationHelper;
+            _pathRegistry = pathRegistry;
         }
 
-        [HttpGet("/galleries")]
-        public ActionResult GetAllGalleries() {
-            return Ok(new GalleryList() { 
-                Galleries = _galleryService.GetAllGalleries().ToList() 
+
+        [HttpGet]
+        public ActionResult GetAllGalleries()
+        {
+            return Ok(new GalleryList()
+            {
+                Galleries = _galleryService.GetAllGalleries().ToList()
             });
         }
 
-        [HttpGet("/gallery/{galleryId}")]
-        public ActionResult GetGalleryPhotos(int galleryId)
+        [HttpGet("{id}")]
+        public ActionResult GetGalleryPhotos(int id)
         {
-            GalleryPhotosDAO galleries = _galleryService.GetGalleryWithPhotos(galleryId);
+            GalleryPhotosDAO galleries = _galleryService.GetGalleryWithPhotos(id);
             return Ok(galleries);
         }
 
 
-        [HttpPost("/gallery")]
+        [HttpPost]
         public ActionResult<GallerySingleDAO> CreateGallery([FromBody] GalleryCreateDAO galleryDAO)
         {
-                GallerySingleDAO gallery = _galleryService.CreateGallery(galleryDAO,authorizationHelper.GetJwtTokenUser());
-                return Created($"/gallery/{gallery.Id}", gallery);
-           
+            GallerySingleDAO gallery = _galleryService.CreateGallery(galleryDAO, _authorizationHelper.GetJwtTokenUser());
+            return Created($"/gallery/{gallery.Id}", gallery);
+
         }
 
-        [HttpDelete("/gallery/{id}")]
+        [HttpDelete("{id}")]
         public ActionResult DeleteGallery(int id)
         {
-            string imagesFolder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
-            Gallery gallery = _galleryService.Delete(id, imagesFolder, authorizationHelper.GetJwtTokenUser());
+            Gallery gallery = _galleryService.Delete(id, _pathRegistry.GetUploadFileFolder(), _authorizationHelper.GetJwtTokenUser());
             return Ok(gallery);
 
         }
 
-        [HttpPatch("/gallery")]
+        [HttpPatch]
         public ActionResult<GallerySingleDAO> UpdateGallery([FromBody] GalleryUpdateDAO galleryDAO)
         {
-              GallerySingleDAO gallery = _galleryService.ChangeGalleryName(galleryDAO, authorizationHelper.GetJwtTokenUser());
-              return Created($"/gallery/{gallery.Id}", gallery);
-            
+            GallerySingleDAO gallery = _galleryService.ChangeGalleryName(galleryDAO, _authorizationHelper.GetJwtTokenUser());
+            return Created($"/gallery/{gallery.Id}", gallery);
         }
 
     }

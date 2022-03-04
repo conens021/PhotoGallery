@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Entities;
-namespace BLL.Mappers.User
+﻿namespace BLL.Mappers.User
 {
     public class UserSingle
     {
-        public UserSingle() { }
-        public UserSingle(DAL.Entities.User user) { 
+        public UserSingle(DAL.Entities.User user)
+        {
             this.Id = user.Id;
             this.Username = user.Username;
             this.Firstname = user.Firstname;

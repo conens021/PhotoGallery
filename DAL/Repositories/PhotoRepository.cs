@@ -9,16 +9,16 @@ namespace DAL.Repositories
     public class PhotoRepository : IPhotoRepository
     {
 
-        private readonly IConfiguration configuration;
+        private readonly IConfiguration _configuration;
 
-        public PhotoRepository(IConfiguration _configuration)
+        public PhotoRepository(IConfiguration configuration)
         {
-            configuration = _configuration;
+            _configuration = configuration;
         }
 
         public Photo Add(Photo photo, Gallery gallery)
         {
-            using (SqlConnection conn = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 using (SqlCommand cmd = new SqlCommand("AddNewPhoto", conn))
                 {
@@ -39,7 +39,7 @@ namespace DAL.Repositories
 
             Photo photo = GetById(id);
 
-            using (SqlConnection conn = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -54,7 +54,7 @@ namespace DAL.Repositories
 
         public Photo GetById(int id)
         {
-            using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 using (SqlCommand cmd = new SqlCommand("GetPhotoWithGallery", connection))
                 {
@@ -67,7 +67,33 @@ namespace DAL.Repositories
 
                     dataReader.Read();
 
-                    return new ToPhoto().WithGallery(dataReader);
+                    return  ToPhoto.WithGallery(dataReader);
+                }
+            }
+        }
+
+        public IEnumerable<Photo> GetRecentlyAdded(int userId)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetUserRecentlyPhotos", connection))
+                {
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    connection.Open();
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+
+                    if (!dataReader.HasRows) return null;
+
+                    List<Photo> photos = new List<Photo>();
+
+                    while (dataReader.Read())
+                    {
+                        photos.Add(ToPhoto.WithGallery(dataReader));
+                    }
+
+
+                    return photos;
                 }
             }
         }
@@ -75,7 +101,7 @@ namespace DAL.Repositories
         public Photo Update(Photo photoChanges)
         {
             string query = "UPDATE PHOTO set Path = @Path, GalleryId = @GalleryId where Id = @PhotoId";
-            using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {

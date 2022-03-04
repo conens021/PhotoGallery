@@ -5,7 +5,8 @@ namespace BLL.Mappers.PhotoDAO
     public class PhotoWithGallery
     {
 
-        public PhotoWithGallery(Photo photo,DAL.Entities.Gallery gallery) { 
+        public PhotoWithGallery(Photo photo, DAL.Entities.Gallery gallery)
+        {
             this.Id = photo.Id;
             this.Path = photo.Path;
             this.CreatedAt = photo.CreatedAt;
@@ -18,7 +19,7 @@ namespace BLL.Mappers.PhotoDAO
         public string Path { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public int GalleryId { get; set; }  
+        public int GalleryId { get; set; }
         public string GalleryName { get; set; }
 
     }

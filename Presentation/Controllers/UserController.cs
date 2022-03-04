@@ -3,25 +3,29 @@ using BLL.Mappers.User;
 using DAL.Entities;
 using BLL.Services;
 using Microsoft.AspNetCore.Authorization;
+using BLL.Mappers.PhotoDAO;
 
 namespace Presentation.Controllers
 {
     [Authorize]
     [Route("[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        private readonly UserService userService;
+        private readonly UserService _userService;
 
-        public UserController(UserService userService)
+        private readonly PhotoService _photoService;
+
+        public UsersController(UserService userService, PhotoService photoService)
         {
-            this.userService = userService;
+            _userService = userService;
+            _photoService = photoService;
         }
 
-        [HttpGet("/users")]
-        public ActionResult GetAllUSers() {
-
-            return Ok(userService.GetAll());
+        [HttpGet]
+        public ActionResult GetAllUSers()
+        {
+            return Ok(_userService.GetAll());
         }
 
         //Single user without galleries
@@ -29,26 +33,33 @@ namespace Presentation.Controllers
         [Route("{id}")]
         public ActionResult GetAllGaleries(int id)
         {
-            UserSingle user = userService.GetById(id);
+            UserSingle user = _userService.GetById(id);
             return Ok(user);
         }
 
         //SIngle user with galleries
-        [HttpGet("{UserId}/galleries")]
-        public ActionResult GetUserGalleries( int UserId)
+        [HttpGet("{id}/galleries")]
+        public ActionResult GetUserGalleries(int id)
         {
-            UserGalleriesWithCovers userGalleries = userService.GetUserGalleries(UserId);
+            UserGalleriesWithCovers userGalleries = _userService.GetUserGalleries(id);
             return Ok(userGalleries);
         }
 
-     
-        [HttpPatch("")]
-        public ActionResult UpdateUser([FromBody] UserUpdateDAO userDAO) {
+        //Get recently added photos by user
+        [HttpGet("{id}/photos")]
+        public ActionResult GetUserRecentlyPhotos(int id)
+        {
 
-            UserSingle user = userService.UpdateUser(userDAO);
+            IEnumerable<PhotoWithGallery> photosWithGallery = _photoService.GetUserRecentPhotos(id);
 
-            return Ok(user);
+            return Ok(photosWithGallery);
         }
 
+        [HttpPatch]
+        public ActionResult UpdateUser([FromBody] UserUpdateDAO userDAO)
+        {
+            UserSingle user = _userService.UpdateUser(userDAO);
+            return Ok(user);
+        }
     }
 }

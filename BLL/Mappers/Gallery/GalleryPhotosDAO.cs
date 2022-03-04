@@ -1,7 +1,6 @@
 ﻿namespace BLL.Mappers.Gallery
 {
     using BLL.Mappers.PhotoDAO;
-    using DAL.Entities;
     public class GalleryPhotosDAO
     {
 

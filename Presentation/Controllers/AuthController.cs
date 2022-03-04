@@ -13,18 +13,18 @@ namespace Presentation.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserService userService;
-        private readonly JwtAuthenticationManager jwtAuthenticationManager;
+        private readonly UserService _userService;
+        private readonly JwtAuthenticationManager _jwtAuthenticationManager;
         public AuthController(UserService userService, JwtAuthenticationManager jwtAuthenticationManager) {
-            this.userService = userService;
-            this.jwtAuthenticationManager = jwtAuthenticationManager;
+            _userService = userService;
+            _jwtAuthenticationManager = jwtAuthenticationManager;
         }
 
         [AllowAnonymous]
         [HttpPost("/auth")]
         public ActionResult UserAuthenticate([FromBody] UserAuthenticate user) {
-            UserAuthorize userFromDb = userService.GetByUsernameOrEmailAndPassword(user.UsernameOrEmail, user.Password);
-            return Ok(new UserSession() { User = userFromDb, Jwt = jwtAuthenticationManager.Authenticate(userFromDb) });
+            UserAuthorize userFromDb = _userService.GetByUsernameOrEmailAndPassword(user.UsernameOrEmail, user.Password);
+            return Ok(new UserSession() { User = userFromDb, Jwt = _jwtAuthenticationManager.Authenticate(userFromDb) });
         }
     }
 }

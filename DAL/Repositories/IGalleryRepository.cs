@@ -11,6 +11,7 @@ namespace DAL.Repositories
     {
 
         public Gallery GetById(int galleryId);
+
         public Gallery Add(Gallery gallery, User user);
 
         public bool UpdateGalleryName(Gallery galleryChanges);

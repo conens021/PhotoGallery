@@ -137,7 +137,7 @@ namespace DAL.Repositories
         public User GetUserGalleries(int userId)
         {
             string query = "UserGalleries";
-            User user = null;
+            User user = new User();
             List<Gallery> galleries = new List<Gallery>();
 
             using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"))){
@@ -151,12 +151,12 @@ namespace DAL.Repositories
 
                     int row = 1;
 
-                    if (!reader.HasRows) return null;
+                    if (!reader.HasRows) return user;
                     while (reader.Read()){
                         if (row == 1){
                             user = new ToUser().UserGalleries(reader);
                         }
-                        galleries.Add(new ToGallery().WithUser(reader,user));
+                        galleries.Add(ToGallery.WithUser(reader,user));
                         row++;
                     }
                 }

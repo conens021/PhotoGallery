@@ -8,40 +8,36 @@ namespace BLL.Services
 {
     public class UserService
     {
-        private IUserRepository userRepository;
-        private IGalleryRepository galleryRepository;
+        private IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository, IGalleryRepository galleryRepository)
+        public UserService(IUserRepository userRepository )
         {
-            this.userRepository = userRepository;
-            this.galleryRepository = galleryRepository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<UserSingle> GetAll()
         {
-            return userRepository.GetAll().Select(u => new UserSingle(u));
+            return _userRepository.GetAll().Select(u => new UserSingle(u));
 
         }
 
         public UserSingle GetById(int id)
         {
-            User user = userRepository.GetById(id);
+            User user = _userRepository.GetById(id);
             if (user == null) throw new BussinesException("User not found", 404);
             return new UserSingle(user);
         }
 
         public UserAuthorize GetByUsernameOrEmailAndPassword(string username,string password)
         {
-            User user = userRepository.GetByUsernameOrEmailaAndPassword(username, password);
+            User user = _userRepository.GetByUsernameOrEmailaAndPassword(username, password);
             if (user == null) throw new BussinesException("Wrong username or password", 401);
             return new UserAuthorize(user);
         }
 
         public UserGalleriesWithCovers GetUserGalleries(int userId)
         {
-           User user = userRepository.GetUserGalleries(userId);
-
-           if (user == null) throw new BussinesException("User not found", 404);
+           User user = _userRepository.GetUserGalleries(userId);
 
            IEnumerable<GallerySingleDAO> galleries = user.Galleries.Select(g => new GallerySingleDAO(g));
 
@@ -51,7 +47,7 @@ namespace BLL.Services
 
         public UserAuthorize CreateUser(UserCreateDAO userDAO)
         {
-            if (userRepository.GetByUsernameOrEmail(userDAO.Username, userDAO.Email) != null) 
+            if (_userRepository.GetByUsernameOrEmail(userDAO.Username, userDAO.Email) != null) 
                 throw new BussinesException("User with given Username or Email already exists.",400);
 
             User user = new User();
@@ -62,14 +58,14 @@ namespace BLL.Services
             user.Lastname = userDAO.Lastname;
             user.CreatedAt = DateTime.Now;
             user.UpdateAt = DateTime.Now;
-            userRepository.Add(user);
+            _userRepository.Add(user);
 
             return new UserAuthorize(user);
         }
 
         public UserSingle Delete(int id)
         {
-            User user = userRepository.Delete(id);
+            User user = _userRepository.Delete(id);
             if (user == null) throw new BussinesException("User not found", 404);
 
             return new UserSingle(user);
@@ -77,7 +73,7 @@ namespace BLL.Services
 
         public UserSingle UpdateUser(UserUpdateDAO userDAO)
         {
-            User user = userRepository.GetById(userDAO.Id);
+            User user = _userRepository.GetById(userDAO.Id);
 
             if (user == null) throw new BussinesException("User not found.", 404);
 
@@ -87,7 +83,7 @@ namespace BLL.Services
             user.Email = userDAO.Email;
             user.UpdateAt = DateTime.Now;
 
-            userRepository.Update(user);
+            _userRepository.Update(user);
 
             return new UserSingle(user);
 

@@ -1,6 +1,5 @@
 ﻿using BLL.Mappers.User;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.Net.Http.Headers;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -12,9 +11,11 @@ namespace Presentation.Attributes
 
         private readonly IConfiguration _configuration;
 
+
         public JwtAuthenticationManager(IConfiguration configuration) {
-            this._configuration = configuration;
+            _configuration = configuration;
         }
+
 
         public string Authenticate(UserAuthorize user)
         {
@@ -48,6 +49,5 @@ namespace Presentation.Attributes
             var claims = handler.ValidateToken(token, validations, out var tokenSecure);
             return claims.Identity.Name;
         }
-
     }
 }

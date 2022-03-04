@@ -1,7 +1,4 @@
-using BLL.Helpers;
-using BLL.Mappers.ErrorHandling;
 using BLL.Services;
-using DAL.Entities;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -17,7 +14,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
-
 
 string key = builder.Configuration["AppSettings:EncryptionKey"];
 
@@ -47,12 +43,12 @@ builder.Services.AddScoped<GalleryService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<PhotoService>();
 
-builder.Services.AddScoped<FileTypeValidation>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddScoped<IPhotoRepository, PhotoRepository>();
 
+builder.Services.AddSingleton<PathRegistry>();
 
 var app = builder.Build();
 

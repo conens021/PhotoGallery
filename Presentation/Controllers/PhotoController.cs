@@ -5,33 +5,29 @@ using Microsoft.AspNetCore.Authorization;
 using Presentation.Helpers;
 using Microsoft.AspNetCore.Hosting;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Presentation.Controllers
 {
     [Authorize]
     [Route("[controller]")]
     [ApiController]
-    public class PhotoController : ControllerBase
+    public class PhotosController : ControllerBase
     {
-        private PhotoService photoService;
-        private readonly AuthorizationHelper authHelper;
-        //to get wwwrot folder
-        private readonly IHostEnvironment hostingEnvironment;
+        private PhotoService _photoService;
+        private readonly AuthorizationHelper _authHelper;
+        private readonly PathRegistry _pathRegistry;
 
-        public PhotoController(AuthorizationHelper _authHelper, PhotoService _photoService,
-                                IHostEnvironment hostingEnvironment)
+        public PhotosController(AuthorizationHelper authHelper, PhotoService photoService, PathRegistry pathRegistry)
         {
-            photoService = _photoService;
-            this.authHelper = _authHelper;
-            this.hostingEnvironment = hostingEnvironment;
+            _photoService = photoService;
+            _authHelper = authHelper;
+            _pathRegistry = pathRegistry;
         }
 
-     
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            PhotoWithGallery photo = photoService.GetPhotoById(id);
+            PhotoWithGallery photo = _photoService.GetPhotoById(id);
 
             return Ok(photo);
         }
@@ -39,8 +35,9 @@ namespace Presentation.Controllers
         [HttpPost]
         public ActionResult UploadPhoto([FromForm] MultipartRequest request)
         {
-            string imagesFolder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
-            PhotoListWithGallery photoListWithGallery = photoService.CreateaPhoto(request, imagesFolder, authHelper.GetJwtTokenUser());
+            PhotoListWithGallery photoListWithGallery = 
+                _photoService.CreateaPhoto(request, _pathRegistry.GetUploadFileFolder(), _authHelper.GetJwtTokenUser());
+
 
             return Ok(photoListWithGallery);
 
@@ -49,26 +46,25 @@ namespace Presentation.Controllers
         [HttpPost("base64")]
         public ActionResult UploadPhoto([FromBody] PhotoUploadBase64 photoUpload)
         {
-            string imagesFolder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
-            PhotoListWithGallery photoListWithGallery = photoService.CreateaPhotoBase64(photoUpload, imagesFolder, authHelper.GetJwtTokenUser());
+
+            PhotoListWithGallery photoListWithGallery =
+                _photoService.CreateaPhotoBase64(photoUpload, _pathRegistry.GetUploadFileFolder(), _authHelper.GetJwtTokenUser());
 
             return Ok(photoListWithGallery);
 
         }
 
-
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            string imagesFolder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
-            PhotoSingleDAO photo = photoService.Delete(id, imagesFolder, authHelper.GetJwtTokenUser());
+            PhotoSingleDAO photo = _photoService.Delete(id, _pathRegistry.GetUploadFileFolder(), _authHelper.GetJwtTokenUser());
             return Ok(photo);
         }
 
         [HttpPatch]
         public ActionResult UpdatePhoto([FromBody] PhotoUpdateDAO photoDAO)
         {
-            PhotoWithGallery photo = photoService.UpdatePhoto(photoDAO, authHelper.GetJwtTokenUser());
+            PhotoWithGallery photo = _photoService.UpdatePhoto(photoDAO, _authHelper.GetJwtTokenUser());
             return Ok(photo);
         }
 

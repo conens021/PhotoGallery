@@ -28,7 +28,7 @@ namespace DAL.Repositories
 
                     dataReader.Read();
 
-                    return new ToGallery().WithAllFields(dataReader);
+                    return ToGallery.WithAllFields(dataReader);
                 }
             }
 
@@ -38,40 +38,50 @@ namespace DAL.Repositories
 
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                using (SqlCommand cmd = new SqlCommand("Select * FROM Photo Where GalleryId = @GalleryId", connection))
+                using (SqlCommand cmd = new SqlCommand("GetGalleryWithPotos", connection))
                 {
-                    //Get gallery
-                    Gallery gallery = GetById(galleryId);
-                    if (gallery == null) return null;
+
                     List<Photo> photos = new List<Photo>();
+
                     connection.Open();
-                    //Get photos
+
                     cmd.Parameters.AddWithValue("@GalleryId", galleryId);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
                     SqlDataReader dataReader = cmd.ExecuteReader();
                     if (dataReader != null)
                     {
                         while (dataReader.Read())
                         {
-                            photos.Add(new ToPhoto().WithAllFields(dataReader));
+                            photos.Add(ToPhoto.WithGallery(dataReader));
                         }
                     }
-                    gallery.Photos = photos;
 
+                    Gallery gallery = GetById(galleryId);
+                    gallery.Photos = photos;
                     return gallery;
+
                 }
+
             }
         }
 
         public Gallery Add(Gallery gallery, User user)
         {
-
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 using (SqlCommand cmd = new SqlCommand(
-                    "insert into Gallery values (@GalleryName,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,@UserId);Select SCOPE_IDENTITY()", connection))
+                    "insert into Gallery values (@GalleryName,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,@UserId,@GalleryCover);Select SCOPE_IDENTITY()",
+                    connection))
                 {
                     cmd.Parameters.AddWithValue("@GalleryName", gallery.Name);
                     cmd.Parameters.AddWithValue("@UserId", user.Id);
+
+                    if (gallery.CoverPhoto == null || gallery.CoverPhoto.Equals(""))
+                        gallery.CoverPhoto = "DEFAULT";
+
+                    cmd.Parameters.AddWithValue("@GalleryCover", gallery.CoverPhoto);
+
                     connection.Open();
                     int id = Convert.ToInt32(cmd.ExecuteScalar());
                     gallery.Id = id;
@@ -119,7 +129,7 @@ namespace DAL.Repositories
                     while (reader.Read())
                     {
                         galleries.Add(
-                            new ToGallery().WithUser(reader, user = new ToUser().IdAndUsername(reader))
+                             ToGallery.WithUser(reader, user = new ToUser().IdAndUsername(reader))
                         );
                     }
                     return galleries;

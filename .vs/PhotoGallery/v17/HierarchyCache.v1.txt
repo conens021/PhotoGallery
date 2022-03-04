@@ -1,0 +1,239 @@
+﻿++Solution 'PhotoGallery' ‎(3 of 3 projects)
+i:{00000000-0000-0000-0000-000000000000}:PhotoGallery.sln
+++BLL
+i:{00000000-0000-0000-0000-000000000000}:BLL
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\bll\bll.csproj
+++Dependencies
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:>443
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:>618
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:>444
+++Analyzers
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:analyzers
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:analyzers
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:analyzers
+++Frameworks
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:frameworks
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:frameworks
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:frameworks
+++Packages
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:packages
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:packages
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:packages
+++Projects
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:projects
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:projects
+++Excpetions
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\excpetions\
+++BussinesException.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\excpetions\bussinesexception.cs
+++Helpers
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\helpers\
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\helpers\
+++Base64StringReader.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\helpers\base64stringreader.cs
+++FileTypeValidation.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\helpers\filetypevalidation.cs
+++Mappers
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\mappers\
+++ErrorHandling
+++ErrorDetails.cs
+++Gallery
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\gallery\
+++GalleryCover.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\gallery\gallerycover.cs
+++GalleryCreateDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\gallery\gallerycreatedao.cs
+++GalleryList.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\gallery\gallerylist.cs
+++GalleryPhotosDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\gallery\galleryphotosdao.cs
+++GallerySingleDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\gallery\gallerysingledao.cs
+++GallerySingleWithUser.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\gallery\gallerysinglewithuser.cs
+++GalleryUpdateDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\gallery\galleryupdatedao.cs
+++PhotoDAO
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\photodao\
+++MultipartRequest.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\photodao\multipartrequest.cs
+++PhotoCreateDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\photodao\photocreatedao.cs
+++PhotoListWithGallery.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\photodao\photolistwithgallery.cs
+++PhotoSingleDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\photodao\photosingledao.cs
+++PhotoUpdateDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\photodao\photoupdatedao.cs
+++PhotoUploadBase64.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\photodao\photouploadbase64.cs
+++PhotoWithGallery.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\photodao\photowithgallery.cs
+++User
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\
+++UserAuthenticate.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\userauthenticate.cs
+++UserAuthorize.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\userauthorize.cs
+++UserCreateDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\usercreatedao.cs
+++UserGalleriesDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\usergalleriesdao.cs
+++UserGalleriesWithCovers.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\usergallerieswithcovers.cs
+++UserGalleryList.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\usergallerylist.cs
+++UserSession.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\usersession.cs
+++UserSingle.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\usersingle.cs
+++UserUpdateDAO.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\mappers\user\userupdatedao.cs
+++Services
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\services\
+++GalleryService.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\services\galleryservice.cs
+++PhotoService.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\services\photoservice.cs
+++UserService.cs
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\services\userservice.cs
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++Microsoft.EntityFrameworkCore.Analyzers
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.0\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.0\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.0\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+++Microsoft.Extensions.Logging.Generators
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+++System.Text.Json.SourceGeneration
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+++Microsoft.NETCore.App
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\bll\microsoft.netcore.app
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\microsoft.netcore.app
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\microsoft.netcore.app
+++Microsoft.AspNetCore.Http.Features (5.0.13)
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:>630
+++Microsoft.Extensions.Hosting.Abstractions (6.0.0)
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:>632
+++Newtonsoft.Json (13.0.1)
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:>631
+++DAL
+i:{249fcbd1-bc4e-4cae-95ca-546bf911fcf6}:c:\users\nemus\source\repos\photogallery\dal\bin\debug\net6.0\dal.dll
+i:{00000000-0000-0000-0000-000000000000}:DAL
+++Presentation
+i:{00000000-0000-0000-0000-000000000000}:Presentation
+++Connected Services 
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:>619
+++Properties
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\properties\
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\properties\
+++wwwroot
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\wwwroot\
+++Images
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\wwwroot\images\
+++8b1a6a9c-9f76-4e24-843c-9e3f1b5d5581.jpg
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\wwwroot\images\8b1a6a9c-9f76-4e24-843c-9e3f1b5d5581.jpg
+++caa396a7-0c51-42ac-a101-e9a8e9285116.png
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\wwwroot\images\caa396a7-0c51-42ac-a101-e9a8e9285116.png
+++Attributes
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\attributes\
+++JwtAuthenticationManager.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\attributes\jwtauthenticationmanager.cs
+++Controllers
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\controllers\
+++AuthController.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\controllers\authcontroller.cs
+++ErrorController.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\controllers\errorcontroller.cs
+++GalleryController.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\controllers\gallerycontroller.cs
+++PhotoController.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\controllers\photocontroller.cs
+++SignUpController.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\controllers\signupcontroller.cs
+++UserController.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\controllers\usercontroller.cs
+++AuthorizationHelper.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\helpers\authorizationhelper.cs
+++PathRegistry.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\helpers\pathregistry.cs
+++appsettings.json
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\appsettings.json
+++appsettings.Development.json
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\appsettings.development.json
+++Program.cs
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\program.cs
+++No service dependencies discovered
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:>620
+++launchSettings.json
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\properties\launchsettings.json
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\properties\launchsettings.json
+++Microsoft.AspNetCore.Analyzers
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.App.Analyzers
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
+++Microsoft.AspNetCore.App.CodeFixes
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.AspNetCore.Razor.Internal.SourceGenerator.Transport
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.internal.sourcegenerator.transport.dll
+++Microsoft.NET.Sdk.Razor.SourceGenerators
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
+++Microsoft.AspNetCore.App
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:c:\users\nemus\source\repos\photogallery\presentation\microsoft.aspnetcore.app
+++Microsoft.AspNetCore.Authentication (2.2.0)
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:>646
+++Microsoft.AspNetCore.Authentication.JwtBearer (6.0.1)
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:>647
+++Swashbuckle.AspNetCore (6.2.3)
+i:{18181e2f-a8ff-49d7-b3a8-9893b66e4c81}:>645
+++Entities
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\entities\
+++Gallery.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\entities\gallery.cs
+++Photo.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\entities\photo.cs
+++User.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\entities\user.cs
+++Repositories
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\repositories\
+++GalleryRepository.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\repositories\galleryrepository.cs
+++IGalleryRepository.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\repositories\igalleryrepository.cs
+++IPhotoRepository.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\repositories\iphotorepository.cs
+++IUserRepository.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\repositories\iuserrepository.cs
+++PhotoRepository.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\repositories\photorepository.cs
+++UserRepository.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\repositories\userrepository.cs
+++ToGallery.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\mappers\togallery.cs
+++ToPhoto.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\mappers\tophoto.cs
+++ToUser.cs
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:c:\users\nemus\source\repos\photogallery\dal\mappers\touser.cs
+++FastMember (1.5.0)
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:>662
+++Microsoft.EntityFrameworkCore (6.0.0)
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:>659
+++Microsoft.EntityFrameworkCore.SqlServer (6.0.0)
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:>660
+++Microsoft.EntityFrameworkCore.Tools (6.0.0)
+i:{474443a9-9b75-4035-83f5-7386fd3a0a6f}:>661

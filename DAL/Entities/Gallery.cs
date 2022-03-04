@@ -16,6 +16,8 @@ namespace DAL.Entities
         public int UserId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public string CoverPhoto { get; set; }
+
         [JsonIgnore]
         public virtual User User { get; set; } = null!;
         public virtual ICollection<Photo> Photos { get; set; }

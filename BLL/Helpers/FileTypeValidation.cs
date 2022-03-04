@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL.Helpers
+﻿namespace BLL.Helpers
 {
-    public class FileTypeValidation
+    public static class FileTypeValidation
     {
-        private string[] permittedExtensions = { ".jpg", ".jpeg",".png",".svg",".gif" };
+        private static string[] permittedExtensions = { ".jpg", ".jpeg", ".png", ".svg", ".gif" };
 
-
-        public bool Validate(string uploadedFileName)
+        public static bool Validate(string uploadedFileName)
         {
             var ext = Path.GetExtension(uploadedFileName).ToLowerInvariant();
 
@@ -19,11 +12,12 @@ namespace BLL.Helpers
             {
                 return false;
             }
-            return true;
 
+            return true;
         }
 
-        public string GetExtension(string fileName) {
+        public static string GetExtension(string fileName)
+        {
             return Path.GetExtension(fileName).ToLowerInvariant(); ;
         }
 
