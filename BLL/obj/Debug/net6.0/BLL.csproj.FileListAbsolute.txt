@@ -30,7 +30,6 @@ C:\Users\MarbleIT\source\repos\PhotoGallery\Business_Logic_Layer\bin\Debug\net6.
 C:\Users\MarbleIT\source\repos\PhotoGallery\Business_Logic_Layer\obj\Debug\net6.0\BLL.csproj.CopyComplete
 C:\Users\Nemus\source\repos\PhotoGallery\BLL\bin\Debug\net6.0\BLL.deps.json
 C:\Users\Nemus\source\repos\PhotoGallery\BLL\bin\Debug\net6.0\BLL.dll
-C:\Users\Nemus\source\repos\PhotoGallery\BLL\bin\Debug\net6.0\ref\BLL.dll
 C:\Users\Nemus\source\repos\PhotoGallery\BLL\bin\Debug\net6.0\BLL.pdb
 C:\Users\Nemus\source\repos\PhotoGallery\BLL\bin\Debug\net6.0\DAL.dll
 C:\Users\Nemus\source\repos\PhotoGallery\BLL\bin\Debug\net6.0\DAL.pdb
@@ -43,3 +42,4 @@ C:\Users\Nemus\source\repos\PhotoGallery\BLL\obj\Debug\net6.0\BLL.csproj.CopyCom
 C:\Users\Nemus\source\repos\PhotoGallery\BLL\obj\Debug\net6.0\BLL.dll
 C:\Users\Nemus\source\repos\PhotoGallery\BLL\obj\Debug\net6.0\ref\BLL.dll
 C:\Users\Nemus\source\repos\PhotoGallery\BLL\obj\Debug\net6.0\BLL.pdb
+C:\Users\Nemus\source\repos\PhotoGallery\BLL\obj\Debug\net6.0\refint\BLL.dll

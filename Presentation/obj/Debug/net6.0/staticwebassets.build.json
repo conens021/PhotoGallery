@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gVFYAWi0abzsTtvikeYC+TXsFJWnnNeM7Xh0CSI1UMg=",
+  "Hash": "MsFuUbs4+TLyKfRElaXfKSKde+sRS1blDjLdolFXkRk=",
   "Source": "Presentation",
   "BasePath": "_content/Presentation",
   "Mode": "Default",
@@ -185,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\226c1fe9-1c0b-4a4b-bf47-f102f0331182.png"
+    },
+    {
+      "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\23048b94-94ad-4722-9cac-f2a83cb71cb3.jpeg",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "Images/23048b94-94ad-4722-9cac-f2a83cb71cb3.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\23048b94-94ad-4722-9cac-f2a83cb71cb3.jpeg"
     },
     {
       "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\24899a0d-bdc5-4e7b-aab1-510ce4ecfc7f.png",
@@ -389,6 +406,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\4c0bedae-b8e0-4ce2-8409-ac20e834610d.png"
+    },
+    {
+      "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\4f9c4b9f-3260-4026-9671-b646e5a08708.jpeg",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "Images/4f9c4b9f-3260-4026-9671-b646e5a08708.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\4f9c4b9f-3260-4026-9671-b646e5a08708.jpeg"
     },
     {
       "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\501ba544-aa05-4f29-99d1-ec37f8033d15.png",
@@ -610,6 +644,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\6f6ae602-f055-487b-997b-32359d3b9b3a.png"
+    },
+    {
+      "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\77ab290e-4845-45c8-a71a-36a35cff31e7.jpeg",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "Images/77ab290e-4845-45c8-a71a-36a35cff31e7.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\77ab290e-4845-45c8-a71a-36a35cff31e7.jpeg"
     },
     {
       "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\793cc4af-a60c-4de8-b4e3-90b263cf4852.png",
@@ -1122,6 +1173,23 @@
       "OriginalItemSpec": "wwwroot\\Images\\c3cda124-c78b-4fe4-9c3f-bbbb2bfc2c03.png"
     },
     {
+      "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\c6fc9415-66e2-4a80-990a-0c0be3b1e7ee.png",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "Images/c6fc9415-66e2-4a80-990a-0c0be3b1e7ee.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\c6fc9415-66e2-4a80-990a-0c0be3b1e7ee.png"
+    },
+    {
       "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\caa396a7-0c51-42ac-a101-e9a8e9285116.png",
       "SourceId": "Presentation",
       "SourceType": "Discovered",
@@ -1426,6 +1494,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\f1479dc3-927b-46a0-ad5f-6da79455f5e1.png"
+    },
+    {
+      "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\f5822bb3-bafe-45d8-8db4-8ea42a0e22a1.jpeg",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "Images/f5822bb3-bafe-45d8-8db4-8ea42a0e22a1.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\f5822bb3-bafe-45d8-8db4-8ea42a0e22a1.jpeg"
     },
     {
       "Identity": "C:\\Users\\Nemus\\source\\repos\\PhotoGallery\\Presentation\\wwwroot\\Images\\f5f13fe7-8839-4450-884d-a68ec49dc61e.png",
